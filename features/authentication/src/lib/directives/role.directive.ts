@@ -41,12 +41,6 @@ export class HasRolesDirective {
       return false;
     }
 
-    console.log(
-      allowedRoles,
-      this.currentUserRole,
-      allowedRoles.includes(this.currentUserRole)
-    );
-
     return allowedRoles.includes(this.currentUserRole);
   }
 }

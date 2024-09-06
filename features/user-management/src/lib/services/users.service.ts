@@ -18,12 +18,11 @@ export class UsersService {
   }
 
   addUser(user: UsersEntity): Observable<UsersEntity> {
-    const newUser = { ...user, id: this.mockUsers.length + 1 };
+    const newUser = { ...user, id: Math.ceil(Math.random() * 100) };
     return of(newUser).pipe(delay(500));
   }
 
   updateUser(user: UsersEntity): Observable<UsersEntity> {
-    const index = this.mockUsers.findIndex((u) => u.id === user.id);
     return of(user).pipe(delay(500));
   }
 }
