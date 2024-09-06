@@ -39,7 +39,10 @@ const reducer = createReducer(
     error,
   })),
   on(UsersActions.addUserSuccess, (state, { user }) =>
-    usersAdapter.addOne(user, { ...state, loaded: true })
+    usersAdapter.addOne(
+      { ...user, id: state.ids.length + 1 },
+      { ...state, loaded: true }
+    )
   ),
   on(UsersActions.addUser, (state) => ({
     ...state,
