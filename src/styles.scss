@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind utilities;
+@tailwind base;
+@tailwind components;
+
+.flex-col {
+  flex-direction: column;
+}

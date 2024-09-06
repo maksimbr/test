@@ -1,1 +1,7 @@
-<app-nx-welcome></app-nx-welcome> <router-outlet></router-outlet>
+@if(isAuth$ | async) {
+<lib-header
+  [currentUser]="currentUser$ | async"
+  (logout)="logout()"
+></lib-header>
+}
+<router-outlet></router-outlet>
