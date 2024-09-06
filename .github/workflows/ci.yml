@@ -27,7 +27,7 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
 
-      - run: npm run test:all
+      - run: npm run test
 
       - name: Build
         run: npx nx build my-deskbird-app
