@@ -1,21 +1,19 @@
 import { Action } from '@ngrx/store';
 
 import * as UsersActions from './users.actions';
-import { UsersEntity } from './users.models';
+import { UserRole, UsersEntity } from './users.models';
 import { UsersState, initialUsersState, usersReducer } from './users.reducer';
 
 describe('Users Reducer', () => {
-  const createUsersEntity = (id: string, name = ''): UsersEntity => ({
+  const createUsersEntity = (id: number, name = ''): UsersEntity => ({
     id,
     name: name || `name-${id}`,
+    role: UserRole.USER,
   });
 
   describe('valid Users actions', () => {
     it('loadUsersSuccess should return the list of known Users', () => {
-      const users = [
-        createUsersEntity('PRODUCT-AAA'),
-        createUsersEntity('PRODUCT-zzz'),
-      ];
+      const users = [createUsersEntity(1), createUsersEntity(2)];
       const action = UsersActions.loadUsersSuccess({ users });
 
       const result: UsersState = usersReducer(initialUsersState, action);

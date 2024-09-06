@@ -44,7 +44,7 @@ export class FeaturesUserManagementComponent implements OnInit {
   protected readonly formControl = inject(FormBuilder).control('');
 
   ngOnInit() {
-    if (!this.users$()) {
+    if (!this.users$()?.length) {
       this.usersFacade.init();
     }
     this.formControl.valueChanges.subscribe((val) =>
