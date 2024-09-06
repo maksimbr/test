@@ -39,10 +39,21 @@ const reducer = createReducer(
     error,
   })),
   on(UsersActions.addUserSuccess, (state, { user }) =>
-    usersAdapter.addOne(user, state)
+    usersAdapter.addOne(user, { ...state, loaded: true })
   ),
+  on(UsersActions.addUser, (state) => ({
+    ...state,
+    loaded: false,
+  })),
+  on(UsersActions.updateUser, (state) => ({
+    ...state,
+    loaded: false,
+  })),
   on(UsersActions.updateUserSuccess, (state, { user }) =>
-    usersAdapter.updateOne({ id: user.id, changes: user }, state)
+    usersAdapter.updateOne(
+      { id: user.id, changes: user },
+      { ...state, loaded: true }
+    )
   )
 );
 
